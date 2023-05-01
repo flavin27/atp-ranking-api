@@ -10,7 +10,7 @@ use DOMXPath;
 class RankingProvider extends ServiceProvider
 {
 
-    public function getRanking($id)
+    public static function getRanking($id)
     {
         $url = "https://revistatenis.uol.com.br/ranking/ranking_atp.html";
 
@@ -35,7 +35,7 @@ class RankingProvider extends ServiceProvider
     $nome_colocado = $dom->getElementsByTagName('td')->item(1 + 4 * ($id - 1))->nodeValue;
     $pontuacao_colocado = $dom->getElementsByTagName('td')->item(2 + 4 * ($id - 1))->nodeValue;
 
-    return [$nome_colocado, $pontuacao_colocado];
+    return ['Ranking' => $id, 'Nome' => $nome_colocado, 'Pontuacao' => $pontuacao_colocado];
     }
 
     /**

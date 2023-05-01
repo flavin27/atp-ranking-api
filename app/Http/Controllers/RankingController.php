@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Providers\RankingProvider;
+use App\Providers\RankingProvider;
 
 class RankingController extends Controller
 {
     public function search($id) {
-        return response()->json($id);
+        
+        $data = RankingProvider::getRanking($id);
+        
+        return response()->json($data);
     }
 }
